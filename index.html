@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hotel Oasis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="topbar">
+    <a href="#booking">Booking</a>
+    <a href="#gallery">Gallery</a>
+    <a href="https://www.google.com/maps/place/Barlindflaten,+5614+Ålvik,+Norge/" target="_blank">Location</a>
+    <a href="#footer">Contact</a>
+  </div>
+
+  <header class="begin">
+    <h1>Luxury Spa Hotel Oasis</h1>
+    <button onclick="scrollToRooms()"> Select Hotel Rooms</button>
+  </header>
+
+  <section class="rooms" id="rooms" class="booking" id="booking">
+    <h2>Hotel Rooms</h2>
+    <div class="room-card" onclick="selectRoom('Suite')">
+      <img src="images/Suite room.jpg" width="300" height="160" alt="Room Suite">
+      <h3>Suite</h3>
+      <p>1-2 persons, size 70 m<sup>2</sup>, Lake view</p>
+      <span>1000 euro / night</span>
+    </div>
+
+    <div class="room-card" onclick="selectRoom('Premium')">
+      <img src="images/Premium room.jpg" width="300" height="160" alt="Room Premium">
+      <h3>Premium</h3>
+      <p>2-3 persons, size 100 m<sup>2</sup>, Mountain view</p>
+      <span>1800 euro/ night</span>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-carousel">
+      <img src="images/mountain-view.jpg" alt="Mountain View">
+      <img src="images/restaurant.jpg" alt="Restaurant">
+      <img src="images/spa.jpg" alt="Spa Area">
+      <img src="images/lounge.jpeg" alt="Lounge View">
+      <img src="images/room.jpg" alt="Spa">
+      <img src="images/pool.jpg" alt="Room">
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <h2>Book a Room</h2>
+    <form onsubmit="submitForm(event)">
+      <label>Full Name:
+        <input type="text" id="name" required />
+      </label>
+      <label>Email:
+        <input type="email" id="email" required />
+      </label>
+      <label>Check-in date:
+        <input type="date" id="checkin" required />
+      </label>
+      <label>Check-out date:
+        <input type="date" id="checkout" required />
+      </label>
+      <label>Selected Room:
+        <select id="room" required>
+          <option value="Suite">Suite</option>
+          <option value="Premium">Premium</option>
+        </select>
+      </label>
+
+      <button type="submit">Book</button>
+    </form>
+    <p id="confirmation" class="hidden">Booking confirmed</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+<footer id="footer">
+  <div class="footer-right">
+    <p>📞 +47 523 93 723</p>
+    <p> email: contact@hoteloasis.no</p>
+  </div>
+  <div class="footer-left">
+    <p>Copyright © 2025 Natalia Petrovska</p>
+  </div>
+</footer>
+
+</html>
