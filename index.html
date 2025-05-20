@@ -15,7 +15,7 @@
     <a href="#footer">Contact</a>
   </div>
 
-  <header class="begin">
+  <header class="start">
     <h1>Luxury Spa Hotel Oasis</h1>
     <button onclick="scrollToRooms()"> Select Hotel Rooms</button>
   </header>
@@ -25,15 +25,15 @@
     <div class="room-card" onclick="selectRoom('Suite')">
       <img src="images/Suite room.jpg" width="300" height="160" alt="Room Suite">
       <h3>Suite</h3>
-      <p>1-2 persons, size 70 m<sup>2</sup>, Lake view</p>
-      <span>1000 euro / night</span>
+      <p>1-2 persons, size 75 m<sup>2</sup>, Lake view</p>
+      <span>890 euro / night</span>
     </div>
 
     <div class="room-card" onclick="selectRoom('Premium')">
       <img src="images/Premium room.jpg" width="300" height="160" alt="Room Premium">
       <h3>Premium</h3>
-      <p>2-3 persons, size 100 m<sup>2</sup>, Mountain view</p>
-      <span>1800 euro/ night</span>
+      <p>2-3 persons, size 102 m<sup>2</sup>, Mountain view</p>
+      <span>1250 euro/ night</span>
     </div>
   </section>
 
@@ -52,7 +52,7 @@
   <section class="booking" id="booking">
     <h2>Book a Room</h2>
     <form onsubmit="submitForm(event)">
-      <label>Full Name:
+      <label>Name:
         <input type="text" id="name" required />
       </label>
       <label>Email:
@@ -73,7 +73,7 @@
 
       <button type="submit">Book</button>
     </form>
-    <p id="confirmation" class="hidden">Booking confirmed</p>
+    <p id="confirmation" class="hidden">✅ Booking confirmed</p>
   </section>
 
   <script src="script.js"></script>
