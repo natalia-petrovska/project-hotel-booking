@@ -356,6 +356,24 @@ form label {
   }
 }
 
+/* Tablet and large mobile (iPad, iPhone Max) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .room-card {
+    width: 45%;
+    max-width: 400px;
+    margin: 20px 1%;
+    display: inline-block;
+  }
+
+  .rooms {
+    text-align: center;
+  }
+
+  form {
+    max-width: 500px;
+  }
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   body {
@@ -442,12 +460,15 @@ form label {
     border: 2px solid #ddd;
     border-radius: 8px;
     margin-top: 5px;
+    box-sizing: border-box;
   }
 
   .booking-summary,
   .availability-status {
     margin: 20px 0;
     padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   button {
@@ -455,6 +476,7 @@ form label {
     padding: 15px;
     font-size: 18px;
     margin-top: 20px;
+    box-sizing: border-box;
   }
 
   .gallery {
@@ -502,7 +524,29 @@ form label {
   }
 }
 
-/* iPhone specific fixes */
+/* Large phones (iPhone Plus/Max) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .room-card {
+    width: 80%;
+    max-width: 400px;
+  }
+
+  form {
+    width: 80%;
+    max-width: 450px;
+  }
+
+  .start h1 {
+    font-size: 32px;
+  }
+
+  .start button {
+    font-size: 20px;
+    padding: 18px 30px;
+  }
+}
+
+/* Standard phones (iPhone regular) */
 @media (max-width: 480px) {
   .start h1 {
     font-size: 24px;
@@ -536,6 +580,23 @@ form label {
   form {
     width: 85%;
     max-width: 320px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 375px) {
+  .room-card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  form {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .start h1 {
+    font-size: 22px;
   }
 }
 
