@@ -3,7 +3,22 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Hotel Oasis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Luxury Spa Hotel Oasis in Norway - Book premium rooms with stunning mountain and lake views. Spa, restaurant, and world-class amenities." />
+  <meta name="keywords" content="hotel, luxury hotel, spa hotel, Norway hotel, Svolvær, hotel booking, premium rooms" />
+  <meta name="author" content="Natalia Petrovska" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Luxury Spa Hotel Oasis - Norway" />
+  <meta property="og:description" content="Experience luxury at Hotel Oasis with stunning views, spa facilities, and premium accommodations in Norway." />
+  <meta property="og:image" content="images/mountain-view.jpg" />
+  
+  <!-- Performance & SEO -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta name="robots" content="index, follow" />
+  
+  <title>Hotel Oasis - Luxury Spa Hotel in Norway | Book Now</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -11,7 +26,7 @@
   <div class="topbar">
     <a href="#booking">Booking</a>
     <a href="#gallery">Gallery</a>
-    <a href="https://www.google.com/maps/place/Barlindflaten,+5614+Ålvik,+Norge/" target="_blank">Location</a>
+    <a href="https://www.google.com/maps/place/Svolv%C3%A6r+Strand/@68.2463796,14.5620553,2954m/data=!3m1!1e3!4m15!1m8!3m7!1s0x461268458f4de5bf:0xa1b03b9db864d02b!2z0J3QvtGA0LLQtdCz0ZbRjw!3b1!8m2!3d60.472024!4d8.468946!16zL20vMDViNHc!3m5!1s0x45de8133a860cbf7:0xd36b76a47cd7583a!8m2!3d68.243283!4d14.604485!16s%2Fg%2F11thv6rl9g?entry=ttu&g_ep=EgoyMDI1MTIwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank">Location</a>
     <a href="#footer">Contact</a>
   </div>
 
@@ -22,58 +37,80 @@
 
   <section class="rooms" id="rooms" class="booking" id="booking">
     <h2>Hotel Rooms</h2>
-    <div class="room-card" onclick="selectRoom('Suite')">
-      <img src="images/Suite room.jpg" width="300" height="160" alt="Room Suite">
+    <div class="room-card" onclick="selectRoom('Suite', 890)">
+      <img src="images/Suite room.jpg" width="300" height="160" alt="Luxury Suite room with lake view" loading="lazy">
       <h3>Suite</h3>
       <p>1-2 persons, size 75 m<sup>2</sup>, Lake view</p>
-      <span>890 euro / night</span>
+      <span class="price">890 euro / night</span>
     </div>
 
-    <div class="room-card" onclick="selectRoom('Premium')">
-      <img src="images/Premium room.jpg" width="300" height="160" alt="Room Premium">
+    <div class="room-card" onclick="selectRoom('Premium', 1250)">
+      <img src="images/Premium room.jpg" width="300" height="160" alt="Premium room with mountain view" loading="lazy">
       <h3>Premium</h3>
       <p>2-3 persons, size 102 m<sup>2</sup>, Mountain view</p>
-      <span>1250 euro/ night</span>
+      <span class="price">1250 euro / night</span>
     </div>
   </section>
 
   <section class="gallery" id="gallery">
     <h2>Photo Gallery</h2>
     <div class="gallery-carousel">
-      <img src="images/mountain-view.jpg" alt="Mountain View">
-      <img src="images/restaurant.jpg" alt="Restaurant">
-      <img src="images/spa.jpg" alt="Spa Area">
-      <img src="images/lounge.jpeg" alt="Lounge View">
-      <img src="images/room.jpg" alt="Spa">
-      <img src="images/pool.jpg" alt="Room">
+      <img src="images/mountain-view.jpg" alt="Stunning mountain view from Hotel Oasis" loading="lazy" onclick="openLightbox(0)">
+      <img src="images/restaurant.jpg" alt="Hotel Oasis restaurant dining area" loading="lazy" onclick="openLightbox(1)">
+      <img src="images/spa.jpg" alt="Luxury spa facilities at Hotel Oasis" loading="lazy" onclick="openLightbox(2)">
+      <img src="images/lounge.jpeg" alt="Comfortable lounge area with scenic views" loading="lazy" onclick="openLightbox(3)">
+      <img src="images/room.jpg" alt="Premium hotel room interior" loading="lazy" onclick="openLightbox(4)">
+      <img src="images/pool.jpg" alt="Hotel swimming pool area" loading="lazy" onclick="openLightbox(5)">
     </div>
   </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <span class="prev" onclick="event.stopPropagation(); changeLightboxImage(-1)">&#10094;</span>
+    <img id="lightbox-img" src="" alt="">
+    <span class="next" onclick="event.stopPropagation(); changeLightboxImage(1)">&#10095;</span>
+  </div>
 
   <section class="booking" id="booking">
     <h2>Book a Room</h2>
     <form onsubmit="submitForm(event)">
       <label>Name:
-        <input type="text" id="name" required />
+        <input type="text" id="name" required oninput="validateField(this)" />
+        <span class="validation-icon"></span>
       </label>
       <label>Email:
-        <input type="email" id="email" required />
+        <input type="email" id="email" required oninput="validateField(this)" />
+        <span class="validation-icon"></span>
       </label>
       <label>Check-in date:
-        <input type="date" id="checkin" required />
+        <input type="date" id="checkin" required onchange="calculatePrice()" />
       </label>
       <label>Check-out date:
-        <input type="date" id="checkout" required />
+        <input type="date" id="checkout" required onchange="calculatePrice()" />
       </label>
       <label>Selected Room:
-        <select id="room" required>
-          <option value="Suite">Suite</option>
-          <option value="Premium">Premium</option>
+        <select id="room" required onchange="calculatePrice()">
+          <option value="Suite" data-price="890">Suite - 890€/night</option>
+          <option value="Premium" data-price="1250">Premium - 1250€/night</option>
         </select>
       </label>
 
-      <button type="submit">Book</button>
+      <!-- Availability Status -->
+      <div id="availability-status" class="availability-status hidden"></div>
+
+      <!-- Booking Summary -->
+      <div id="booking-summary" class="booking-summary hidden">
+        <h3>Booking Summary</h3>
+        <p><strong>Room:</strong> <span id="summary-room">-</span></p>
+        <p><strong>Dates:</strong> <span id="summary-dates">-</span></p>
+        <p><strong>Nights:</strong> <span id="summary-nights">-</span></p>
+        <p class="total-price"><strong>Total:</strong> <span id="summary-total">0</span> €</p>
+      </div>
+
+      <button type="submit">Book Now</button>
     </form>
-    <p id="confirmation" class="hidden">✅ Booking confirmed</p>
+    <p id="confirmation" class="hidden">✅ Booking confirmed! We'll contact you shortly.</p>
   </section>
 
   <script src="script.js"></script>
